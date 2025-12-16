@@ -1,1 +1,186 @@
+/* --- Variables de Colores (Turquesa y Rosado Pastel) --- */
+:root {
+    --bg-color: #f9fbfd;
+    --text-color: #333;
+    --primary-turquesa: #48cae4;
+    --light-turquesa: #ade8f4;
+    --primary-pink: #f7aef8;
+    --light-pink: #fbcbf9;
+    --card-bg: #ffffff;
+    --approved-bg: #dbfadd; /* Un verde/turquesa muy suave para aprobados */
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* --- Header --- */
+header {
+    background: linear-gradient(135deg, var(--light-turquesa), var(--light-pink));
+    padding: 2rem;
+    text-align: center;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-weight: 600;
+    color: #444;
+}
+
+/* --- Barra de Progreso --- */
+.progreso-container {
+    max-width: 500px;
+    margin: 1rem auto;
+    text-align: left;
+}
+
+.barra-fondo {
+    background-color: #fff;
+    border-radius: 20px;
+    height: 20px;
+    width: 100%;
+    margin-top: 5px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.barra-relleno {
+    background-color: var(--primary-turquesa);
+    height: 100%;
+    width: 0%;
+    border-radius: 20px;
+    transition: width 0.5s ease;
+}
+
+.btn-reset {
+    background-color: #fff;
+    border: 2px solid var(--primary-pink);
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn-reset:hover {
+    background-color: var(--primary-pink);
+    color: white;
+}
+
+/* --- Contenedor de la Malla (Grid) --- */
+#contenedor-malla {
+    display: flex;
+    flex-wrap: nowrap; /* Mantiene las columnas en horizontal */
+    overflow-x: auto;  /* Permite scroll horizontal si no cabe */
+    padding: 1rem;
+    gap: 1.5rem;
+    min-height: 60vh;
+    align-items: flex-start;
+}
+
+/* Scrollbar personalizado */
+#contenedor-malla::-webkit-scrollbar {
+    height: 10px;
+}
+#contenedor-malla::-webkit-scrollbar-thumb {
+    background-color: var(--primary-turquesa);
+    border-radius: 5px;
+}
+
+/* --- Columnas de Semestres --- */
+.columna-semestre {
+    min-width: 260px;
+    max-width: 260px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    padding: 10px;
+    flex-shrink: 0; /* Evita que las columnas se aplasten */
+}
+
+.titulo-semestre {
+    text-align: center;
+    background-color: var(--primary-turquesa);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* --- Tarjetas de Ramos --- */
+.ramo {
+    background-color: var(--card-bg);
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 5px solid var(--light-pink);
+    font-size: 0.9rem;
+    position: relative;
+    user-select: none;
+}
+
+.ramo:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* --- Estado Aprobado --- */
+.ramo.aprobado {
+    background-color: var(--approved-bg);
+    border-left: 5px solid var(--primary-turquesa);
+    color: #777;
+    text-decoration: line-through;
+    opacity: 0.8;
+}
+
+.ramo.aprobado::after {
+    content: '✔';
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    color: var(--primary-turquesa);
+    font-size: 1.2rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: #888;
+    font-size: 0.8rem;
+}
+
+/* --- Responsividad para móviles --- */
+@media (max-width: 768px) {
+    #contenedor-malla {
+        flex-direction: column; /* Cambia a vertical en móviles */
+        overflow-x: hidden;
+    }
+    
+    .columna-semestre {
+        max-width: 100%; /* Ocupa todo el ancho */
+        min-width: 100%;
+    }
+}
 
